@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marmitas da Bete</title>
+<style>
+:root{--green:#315b3d;--green2:#47784f;--cream:#fffaf0;--orange:#e58a3a;--ink:#292d27}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink)}
+header{background:var(--green);color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:16px;position:sticky;top:0;z-index:5;box-shadow:0 3px 12px #0002}
+.logo{font-size:1.35rem;font-weight:800;letter-spacing:.3px}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:white;text-decoration:none;font-weight:700;font-size:.95rem}
+.hero{padding:76px 7%;background:linear-gradient(100deg,#213e2cdd,#315b3dcc),url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1800&q=85') center/cover;color:white}
+.hero small{color:#ffd39d;font-weight:800;text-transform:uppercase;letter-spacing:2px}.hero h1{font-size:clamp(2.4rem,6vw,4.6rem);max-width:650px;margin:12px 0}.hero p{font-size:1.15rem;max-width:540px;line-height:1.6}.cta{display:inline-block;background:var(--orange);color:white;text-decoration:none;padding:14px 22px;border-radius:30px;font-weight:800;margin-top:12px}
+section{padding:52px 7%}.section-head{text-align:center;margin-bottom:28px}.section-head h2{font-size:2rem;color:var(--green);margin:0 0 8px}.section-head p{color:#686b62;margin:0}
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:22px 0 28px}.filter{border:1px solid #cbd5c8;background:white;color:var(--green);padding:9px 16px;border-radius:22px;cursor:pointer;font-weight:700}.filter.active,.filter:hover{background:var(--green);color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.product{background:white;border-radius:17px;overflow:hidden;box-shadow:0 5px 18px #253a2512;display:flex;flex-direction:column}.product img{width:100%;height:165px;object-fit:cover}.product-content{padding:17px;display:flex;flex-direction:column;flex:1}.product h3{margin:0 0 7px;color:var(--green)}.product p{margin:0 0 14px;color:#666;line-height:1.45;font-size:.94rem;flex:1}.price-row{display:flex;justify-content:space-between;align-items:center;gap:8px}.price{font-size:1.15rem;font-weight:800}.add{border:0;background:var(--orange);color:white;padding:10px 13px;border-radius:20px;font-weight:800;cursor:pointer}.add:hover{filter:brightness(.94)}
+.about{background:#edf2e9;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.about img{width:100%;height:300px;object-fit:cover;border-radius:18px}.about h2{color:var(--green);font-size:2rem}.about p{line-height:1.7;color:#555}
+.order{background:var(--green);color:white;text-align:center}.order h2{font-size:2rem;margin-top:0}.order p{line-height:1.6}.order .cta{background:#f3a14f}
+footer{text-align:center;padding:22px;background:#213e2c;color:#e9f0e6;font-size:.9rem}
+.cart{position:fixed;right:18px;bottom:18px;z-index:8;background:var(--orange);color:white;border:0;border-radius:30px;padding:14px 20px;font-weight:800;box-shadow:0 5px 18px #0003;cursor:pointer}
+#cartPanel{position:fixed;right:18px;bottom:78px;width:min(360px,calc(100% - 36px));background:white;border-radius:16px;box-shadow:0 8px 30px #0003;padding:18px;z-index:9;display:none}
+#cartPanel h3{margin:0 0 12px;color:var(--green)}.cart-line{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #eee}.cart-total{font-weight:800;margin:14px 0}.checkout{display:block;text-align:center;background:#25834b;color:white;text-decoration:none;padding:12px;border-radius:10px;font-weight:800}
+@media(max-width:650px){header{align-items:flex-start;flex-direction:column}nav{gap:12px}.hero{padding:58px 7%}.about{grid-template-columns:1fr}.about img{height:220px}}
+</style>
+</head>
+<body>
+<header><div class="logo">🍲 Marmitas da Bete</div><nav><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre</a><a href="#pedido">Pedidos</a></nav></header>
+<main>
+<div class="hero"><small>Comida caseira feita com carinho</small><h1>Seu almoço gostoso está aqui!</h1><p>Marmitas caprichadas, bolos deliciosos e bebidas para acompanhar. Sabor de comida feita em casa!</p><a class="cta" href="#cardapio">Ver cardápio</a></div>
+<section id="cardapio"><div class="section-head"><h2>Nosso cardápio</h2><p>Escolha seus favoritos e monte seu pedido.</p></div>
+<div class="filters"><button class="filter active" data-filter="todos">Todos</button><button class="filter" data-filter="almocos">Almoços</button><button class="filter" data-filter="bolos">Bolos</button><button class="filter" data-filter="bebidas">Bebidas</button></div>
+<div class="grid" id="products">
+<article class="product" data-category="almocos"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80" alt="Marmita caseira"><div class="product-content"><h3>Marmita tradicional</h3><p>Arroz, feijão, carne do dia e acompanhamento.</p><div class="price-row"><span class="price">R$ 20,00</span><button class="add" data-name="Marmita tradicional" data-price="20">Adicionar</button></div></div></article>
+<article class="product" data-category="almocos"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80" alt="Frango com acompanhamentos"><div class="product-content"><h3>Marmita de frango</h3><p>Frango grelhado, arroz, feijão e legumes.</p><div class="price-row"><span class="price">R$ 22,00</span><button class="add" data-name="Marmita de frango" data-price="22">Adicionar</button></div></div></article>
+<article class="product" data-category="almocos"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Carne assada"><div class="product-content"><h3>Marmita de carne</h3><p>Carne assada, arroz, feijão e farofa.</p><div class="price-row"><span class="price">R$ 25,00</span><button class="add" data-name="Marmita de carne" data-price="25">Adicionar</button></div></div></article>
+<article class="product" data-category="bolos"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Bolo de chocolate"><div class="product-content"><h3>Bolo de chocolate</h3><p>Fofinho, com cobertura cremosa de chocolate.</p><div class="price-row"><span class="price">R$ 8,00</span><button class="add" data-name="Bolo de chocolate" data-price="8">Adicionar</button></div></div></article>
+<article class="product" data-category="bolos"><img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=700&q=80" alt="Bolo caseiro"><div class="product-content"><h3>Bolo caseiro</h3><p>Uma fatia fresquinha, perfeita para o café.</p><div class="price-row"><span class="price">R$ 6,00</span><button class="add" data-name="Bolo caseiro" data-price="6">Adicionar</button></div></div></article>
+<article class="product" data-category="bebidas"><img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=700&q=80" alt="Suco natural"><div class="product-content"><h3>Suco natural</h3><p>Suco geladinho para acompanhar sua refeição.</p><div class="price-row"><span class="price">R$ 7,00</span><button class="add" data-name="Suco natural" data-price="7">Adicionar</button></div></div></article>
+<article class="product" data-category="bebidas"><img src="https://images.unsplash.com/photo-1513558161293-cAdf1c6c6c4?auto=format&fit=crop&w=700&q=80" alt="Refrigerante"><div class="product-content"><h3>Refrigerante lata</h3><p>Bem gelado, 350 ml.</p><div class="price-row"><span class="price">R$ 6,00</span><button class="add" data-name="Refrigerante lata" data-price="6">Adicionar</button></div></div></article>
+</div></section>
+<section class="about" id="sobre"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1000&q=80" alt="Cozinha preparando comida"><div><h2>Feito com carinho, como em casa ❤️</h2><p>Na Marmitas da Bete, cada refeição é preparada pensando naquele gostinho de comida caseira. Temos opções para seu almoço, um docinho para a tarde e bebidas para completar o pedido.</p></div></section>
+<section class="order" id="pedido"><h2>Peça agora!</h2><p>Monte seu carrinho e finalize seu pedido pelo WhatsApp.<br>Estamos esperando por você!</p><a class="cta" href="#cardapio">Escolher produtos</a></section>
+</main>
+<footer>© 2026 Marmitas da Bete • Comida caseira com amor</footer>
+<button class="cart" id="cartButton">🛒 Carrinho (<span id="count">0</span>)</button>
+<div id="cartPanel"><h3>Seu pedido</h3><div id="cartItems">Seu carrinho está vazio.</div><div class="cart-total" id="total">Total: R$ 0,00</div><a class="checkout" id="checkout" href="#" target="_blank">Finalizar pelo WhatsApp</a><p style="font-size:12px;color:#777;margin-bottom:0">Configure o número de WhatsApp no código antes de divulgar.</p></div>
+<script>
+const cart={};const money=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.name;cart[n]=(cart[n]||0)+1;render();}));
+function render(){const entries=Object.entries(cart);const count=entries.reduce((s,[,q])=>s+q,0);document.getElementById('count').textContent=count;let total=0;const box=document.getElementById('cartItems');box.innerHTML='';entries.forEach(([name,q])=>{const button=document.querySelector(`[data-name="${name}"]`);const price=Number(button.dataset.price);total+=price*q;const row=document.createElement('div');row.className='cart-line';row.textContent=`${q}x ${name} — ${money(price*q)}`;box.appendChild(row);});if(!entries.length)box.textContent='Seu carrinho está vazio.';document.getElementById('total').textContent='Total: '+money(total);const message=entries.map(([name,q])=>`${q}x ${name}`).join('\n')+`\nTotal: ${money(total)}`;document.getElementById('checkout').href='https://wa.me/5500000000000?text='+encodeURIComponent('Olá! Quero fazer este pedido:\n'+message);}
+document.getElementById('cartButton').addEventListener('click',()=>{const p=document.getElementById('cartPanel');p.style.display=p.style.display==='block'?'none':'block';});
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.product').forEach(p=>p.style.display=btn.dataset.filter==='todos'||p.dataset.category===btn.dataset.filter?'flex':'none');}));
+render();
+</script>
+</body></html>
